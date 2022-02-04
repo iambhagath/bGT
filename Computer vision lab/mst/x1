@@ -1,0 +1,10 @@
+import numpy as np
+import cv2
+cap = cv2.VideoCapture("dog.mp4")
+cap.set(1, 100)
+ret, frame = cap.read()
+cv2.imshow('100th frame', frame)
+while True:
+    ch = 0xFF & cv2.waitKey(1)
+    if ch == 27:
+        break

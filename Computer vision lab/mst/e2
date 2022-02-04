@@ -1,0 +1,29 @@
+import cv2
+import time
+frameWidth = 1080
+frameHeight = 1920
+pTime = time.time()
+cap = cv2.VideoCapture("dog.mp4")
+
+cap.release()
+count = 1
+while True:
+    while True:
+
+        success, frame = cap.read()
+        t1 = time.time()
+        fps = 1/(t1-t0)
+        t0 = t1
+        cv2.putText(frame, f'FPS:{int(fps)}', (20, 170),
+                    cv2.FONT_HERSHEY_PLAIN, 10, (0, 255, 0), 5)
+
+        if success:
+            cv2.imshow("video", frame)
+
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+        else:
+            break
+
+cap.release()
+cv2.destroyAll
